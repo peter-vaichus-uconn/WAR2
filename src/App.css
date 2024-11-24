@@ -48,9 +48,9 @@
   overflow: hidden;
 }
 
-#face_down:hover {
+/* #face_down:hover {
   cursor: default;
-}
+} */
 
 .card:hover{
   cursor: pointer;

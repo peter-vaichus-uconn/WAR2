@@ -1,28 +1,48 @@
+import { useState } from 'react';
 import './App.css'
 import background1 from "./Screenshot 2024-11-21 at 1.21.42 PM.png";
-import background2 from "./Screenshot 2024-11-21 at 1.29.16 PM.png"
+import ReactCardFlip from 'react-card-flip';
+import hatsArr from './faces';
+
+const face1 = hatsArr[Math.floor(Math.random() * Object.keys(hatsArr).length)][1];
+const face2 = hatsArr[Math.floor(Math.random() * Object.keys(hatsArr).length)][1];
 
 
-// function handleClick(){ //method to flip card
 
-// }
+function App(){
+  const [isFlipped, SetIsFlipped] = useState(false);
 
-
-const App = () =>{
+  function flipcard(){
+    SetIsFlipped(!isFlipped)
+  }
 
   return (
     <>
+
+      <button onClick={flipcard}>
+
+      </button>
       <div style={{ display: "flex", justifyContent: 'center', flexWrap: "wrap" }}>
-        <div style={{ backgroundImage: `url(${background1})`,backgroundSize: "cover"}} className = "card" onClick={handleClick()}>
-        </div>
-        <div id = "face_down" className = "card">
-        </div>
+        <ReactCardFlip flipDirection='horizontal' isFlipped={isFlipped}>
+          <div style={{ backgroundImage: `url(${background1})`,backgroundSize: "cover"}} className = "card card_back" onClick={flipcard}>
+
+          </div>
+
+          <div style={{ backgroundImage: `url(${face1})`,backgroundSize: "cover"}} className = "card card_face" onClick={flipcard}>
+
+          </div >
+        </ReactCardFlip>
       </div>
       <div style={{ display: "flex", justifyContent: 'center', flexWrap: "wrap" }}>
-        <div style={{ backgroundImage: `url(${background2})`,backgroundSize: "cover"}} className = "card">
-        </div>
-        <div  id = "face_down" className = "card">
-        </div>
+        <ReactCardFlip flipDirection='horizontal' isFlipped={isFlipped}>
+          <div style={{ backgroundImage: `url(${background1})`,backgroundSize: "cover"}} className = "card card_back" onClick={flipcard}>
+
+          </div>
+
+          <div style={{ backgroundImage: `url(${face2})`,backgroundSize: "cover"}} className = "card card_face" onClick={flipcard}>
+
+          </div >
+        </ReactCardFlip>
       </div>
     </>
   )
