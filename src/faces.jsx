@@ -1,3 +1,4 @@
+//test
 import C2 from "./face/2C@3x.png";
 import C3 from "./face/3C@3x.png";
 import C4 from "./face/4C@3x.png";
