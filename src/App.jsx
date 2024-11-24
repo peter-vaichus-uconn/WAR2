@@ -8,6 +8,7 @@ const face1 = hatsArr[Math.floor(Math.random() * Object.keys(hatsArr).length)][1
 const face2 = hatsArr[Math.floor(Math.random() * Object.keys(hatsArr).length)][1];
 
 
+//testing
 
 function App(){
   const [isFlipped, SetIsFlipped] = useState(false);
