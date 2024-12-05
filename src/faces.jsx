@@ -55,62 +55,124 @@ import DQ from "./face/QD@3x.png";
 import DK from "./face/KD@3x.png";
 import DA from "./face/AD@3x.png";
 
-export default {
-    0: [2, C2],
-    1: [3, C3],
-    2: [4, C4],
-    3: [5, C5],
-    4: [6, C6],
-    5: [7, C7],
-    6: [8, C8],
-    7: [9, C9],
-    8: [10, CT],
-    9: [11, CJ],
-    10: [12, CQ],
-    11: [13, CK],
-    12: [14, CA],
 
-    13: [2, S2],
-    14: [3, S3],
-    15: [4, S4],
-    16: [5, S5],
-    17: [6, S6],
-    18: [7, S7],
-    19: [8, S8],
-    20: [9, S9],
-    21: [10, ST],
-    22: [11, SJ],
-    23: [12, SQ],
-    24: [13, SK],
-    25: [14, SA],
+function randomNoRepeats(array) {
+    var copy = array.slice(0);
+    return function() {
+      if (copy.length < 1) { copy = array.slice(0); }
+      var index = Math.floor(Math.random() * copy.length);
+      var item = copy[index];
+      copy.splice(index, 1);
+      return item;
+    };
+  }
+  
+  class Queue {
+      constructor() {
+          this.items = {}
+          this.frontIndex = 0
+          this.backIndex = 0
+      }
+      enqueue(item) {
+          this.items[this.backIndex] = item
+          this.backIndex++
+          return item + ' inserted'
+      }
+      dequeue() {
+          const item = this.items[this.frontIndex]
+          delete this.items[this.frontIndex]
+          this.frontIndex++
+          return item
+      }
+      peek() {
+          return this.items[this.frontIndex]
+      }
 
-    26: [2, H2],
-    27: [3, H3],
-    28: [4, H4],
-    29: [5, H5],
-    30: [6, H6],
-    31: [7, H7],
-    32: [8, H8],
-    33: [9, H9],
-    34: [10, HT],
-    35: [11, HJ],
-    36: [12, HQ],
-    37: [13, HK],
-    38: [14, HA],
+      length(){
+        return this.backIndex - this.frontIndex;
+      }
 
-    39: [2, D2],
-    40: [3, D3],
-    41: [4, D4],
-    42: [5, D5],
-    43: [6, D6],
-    44: [7, D7],
-    45: [8, D8],
-    46: [9, D9],
-    47: [10, DT],
-    48: [11, DJ],
-    49: [12, DQ],
-    50: [13, DK],
-    51: [14, DA]
-};
+      get printQueue() {
+          return this.items;
+      }
+  }
+
+const deck1 = new Queue()
+const deck2 = new Queue()
+
+
+var cards = [
+[2, C2],
+[3, C3],
+[4, C4],
+[5, C5],
+[6, C6],
+[7, C7],
+[8, C8],
+[9, C9],
+[10, CT],
+[11, CJ],
+[12, CQ],
+[13, CK],
+[14, CA],
+
+[2, S2],
+[3, S3],
+[4, S4],
+[5, S5],
+[6, S6],
+[7, S7],
+[8, S8],
+[9, S9],
+[10, ST],
+[11, SJ],
+[12, SQ],
+[13, SK],
+[14, SA],
+
+[2, H2],
+[3, H3],
+[4, H4],
+[5, H5],
+[6, H6],
+[7, H7],
+[8, H8],
+[9, H9],
+[10, HT],
+[11, HJ],
+[12, HQ],
+[13, HK],
+[14, HA],
+
+[2, D2],
+[3, D3],
+[4, D4],
+[5, D5],
+[6, D6],
+[7, D7],
+[8, D8],
+[9, D9],
+[10, DT],
+[11, DJ],
+[12, DQ],
+[13, DK],
+[14, DA]
+
+]
+
+var chooser = randomNoRepeats(cards);
+
+for (let i = 0; i < 26; i++) {
+    deck1.enqueue(chooser());
+   }
+   
+   for (let i = 0; i < 26; i++) {
+    deck2.enqueue(chooser());
+   }
+
+
+export { Queue }
+export { deck1, deck2 };
+
 
 

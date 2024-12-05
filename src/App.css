@@ -125,12 +125,16 @@
 
 
 .card.card_back:hover{
-  cursor: pointer;
+  border: 2px solid red;
 }
 .card.card_face:hover{
   cursor: pointer;
+  border: 2px solid red;
 }
 
 .read-the-docs {
   color: #888;
 }
+
+
+
